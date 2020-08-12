@@ -1,0 +1,61 @@
+version: "3.7"
+services:
+    nifi-node1:
+        container_name: nifi-node1
+        ports:
+            - "9090:8080"
+        build:
+            context: .
+            dockerfile: nifi-node1.dockerfile
+        volumes:
+            - "./nifi-node1/data/:/nifi_data"
+            - "./nifi-node1/zk/data:/opt/zookeeper/data"
+        networks:
+            nifi_lan:
+                ipv4_address: 10.91.100.91
+                aliases:
+                    - nifi-node1
+    nifi-node2:
+        container_name: nifi-node2
+        ports:
+            - "9091:8080"
+        build:
+            context: .
+            dockerfile: nifi-node2.dockerfile
+        volumes:
+            - "./nifi-node2/data/:/nifi_data"
+            - "./nifi-node2/zk/data:/opt/zookeeper/data"            
+        networks:
+            nifi_lan:
+                ipv4_address: 10.91.100.92
+                aliases:
+                    - nifi-node2
+    nifi-node3:
+        container_name: nifi-node3
+        ports:
+            - "9092:8080"
+        build:
+            context: .
+            dockerfile: nifi-node3.dockerfile
+        volumes:
+            - "./nifi-node3/data/:/nifi_data"
+            - "./nifi-node3/zk/data:/opt/zookeeper/data"            
+        networks:
+            nifi_lan:
+                ipv4_address: 10.91.100.93
+                aliases:
+                    - nifi-node3
+
+networks:
+    nifi_lan:
+        name: bridge_nifi_lan
+        driver: bridge 
+        ipam:
+            config:
+              - subnet: 10.91.100.0/24
+                #ip_range: 10.92.100.0/24
+                #gateway: 10.92.100.1
+                #aux_addresses:
+                #    host1: 10.92.100.10
+                #    host2: 10.92.100.11
+                #    host3: 10.92.100.12
