@@ -1,8 +1,19 @@
 /local_media/
-/nifi-node1/data/
-/nifi-node1/zk/data/
-/nifi-node2/data/
-/nifi-node2/zk/data/
-/nifi-node3/data/
-/nifi-node3/zk/data/
+/nifi-node1/data/*
+!nifi-node1/data/.gitkeep
+
+/nifi-node1/zk/data/*
+!nifi-node1/zk/data/.gitkeep
+
+/nifi-node2/data/*
+!nifi-node2/data/.gitkeep
+
+/nifi-node2/zk/data/*
+!nifi-node2/zk/data/.gitkeep
+
+/nifi-node3/data/*
+!nifi-node3/data/.gitkeep
+
+/nifi-node3/zk/data/*
+!nifi-node3/zk/data/.gitkeep
 
