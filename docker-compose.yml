@@ -2,6 +2,7 @@ version: "3.7"
 services:
     nifi-node1:
         container_name: nifi-node1
+        privileged: true
         ports:
             - "9090:8080"
         build:
@@ -9,7 +10,7 @@ services:
             dockerfile: nifi-node1.dockerfile
         volumes:
             - "./nifi-node1/data/:/nifi_data"
-            - "./nifi-node1/zk/data:/opt/zookeeper/data"
+            - "./nifi-node1/zk/:/zk_data"
         networks:
             nifi_lan:
                 ipv4_address: 10.91.100.91
@@ -17,6 +18,7 @@ services:
                     - nifi-node1
     nifi-node2:
         container_name: nifi-node2
+        privileged: true
         ports:
             - "9091:8080"
         build:
@@ -24,7 +26,7 @@ services:
             dockerfile: nifi-node2.dockerfile
         volumes:
             - "./nifi-node2/data/:/nifi_data"
-            - "./nifi-node2/zk/data:/opt/zookeeper/data"            
+            - "./nifi-node2/zk/:/zk_data"            
         networks:
             nifi_lan:
                 ipv4_address: 10.91.100.92
@@ -39,7 +41,7 @@ services:
             dockerfile: nifi-node3.dockerfile
         volumes:
             - "./nifi-node3/data/:/nifi_data"
-            - "./nifi-node3/zk/data:/opt/zookeeper/data"            
+            - "./nifi-node3/zk/:/zk_data"            
         networks:
             nifi_lan:
                 ipv4_address: 10.91.100.93
