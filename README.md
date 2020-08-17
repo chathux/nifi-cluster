@@ -33,7 +33,8 @@ included myid file in data directory with 1,2,3 values consecutively.
 
 - nifi.cluster.flow.election.max.candidates - Specifies the number of Nodes required in the cluster to cause early election of Flows. This allows the Nodes in the cluster to avoid having to wait a long time before starting processing if we reach at least this number of nodes in the cluster.
 
-
+- nifi.remote.input.host=nifi-node1
+- nifi.remote.input.socket.port=8050
 
 ### Sample Docker Commands
 
